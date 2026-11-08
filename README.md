@@ -39,6 +39,17 @@ prompt 模式、loop、eval 資源。
 | **ERP** | SAP/Odoo/Dynamics/NetSuite AI assists, legacy-modernization patterns |
 | **EM / Tech Lead / CTO** | AI adoption strategy, team topology, compliance (EU AI Act, NIST) |
 
+## By the numbers / 數據一覽
+
+| | |
+|---|---|
+| Curated entries / 策展條目 | **447** across 6 domains / 6 大領域 |
+| Verified source URLs / 驗證來源 | **736** — incl. 51 arXiv papers, 226 GitHub repos |
+| Role guides / 角色指南 | **8** roles — PM · QA · DEV/RD · SRE · Platform · ERP · Data · EM/CTO |
+| AI companies / AI 公司 | **14** — Anthropic · OpenAI · Google · xAI · Mistral · Qwen · z.ai · DeepSeek +6 |
+| Mermaid diagrams / 圖表 | **15** |
+| Last verified / 最後驗證 | 2026-11-09 (all links HTTP-checked / 全部連結 HTTP 實測) |
+
 ## Start here / 快速上手
 
 | If you want… / 如果你想… | Go to / 去看 |

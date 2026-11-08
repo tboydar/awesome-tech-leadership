@@ -32,6 +32,17 @@
 | **ERP** | SAP／Odoo／Dynamics／NetSuite AI 輔助、legacy 現代化模式 |
 | **EM / Tech Lead / CTO** | AI 導入策略、team topology、合規（EU AI Act、NIST） |
 
+## 數據一覽
+
+| | |
+|---|---|
+| 策展條目 | **447** 條，橫跨 6 大領域 |
+| 驗證來源 | **736** 個 — 含 51 篇 arXiv 論文、226 個 GitHub repo |
+| 角色指南 | **8** 角色 — PM · QA · DEV/RD · SRE · Platform · ERP · Data · EM/CTO |
+| AI 公司 | **14** 家 — Anthropic · OpenAI · Google · xAI · Mistral · Qwen · z.ai · DeepSeek 等 |
+| Mermaid 圖表 | **15** 張 |
+| 最後驗證 | 2026-11-09（全部連結 HTTP 實測） |
+
 ## 快速上手
 
 | 如果你想… | 去看 |
