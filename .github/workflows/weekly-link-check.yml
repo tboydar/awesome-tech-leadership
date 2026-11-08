@@ -20,6 +20,7 @@ jobs:
         with:
           args: >-
             --no-progress
+            --accept 200,201,204,206,301,302,303,307,308,403,429
             --exclude '^mailto:'
             --exclude '^https://x\.com(/|$)'
             --exclude '^https://twitter\.com(/|$)'
