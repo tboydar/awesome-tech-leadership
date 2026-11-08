@@ -1,0 +1,35 @@
+MIT License
+
+Copyright (c) 2026 tboydar and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+NOTE ON CURATED CONTENT / 第三方內容說明:
+
+This repository contains curated links, summaries, and references to
+third-party materials (articles, documentation, open-source projects, papers).
+Such third-party materials remain the property of their respective copyright
+holders. The MIT license above covers only this repository's own original
+content (structure, original summaries, original prompt examples, and code).
+
+本 repo 收錄的第三方連結、摘要與參考資料，其版權歸原作者所有。
+MIT 授權僅涵蓋本 repo 原創內容（結構、原創摘要、原創 prompt 範例與程式碼）。
+收錄之開源專案請依其個別 license（於各條目標註）使用。

@@ -1,0 +1,52 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  catalog:
+    name: Catalog metadata & index sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python3 scripts/test_build_catalog.py
+      - name: Check entry metadata and catalog/index.json sync
+        run: python3 scripts/build_catalog.py --check
+
+  mermaid:
+    name: Mermaid diagrams render
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install mermaid-cli
+        run: npm i -g @mermaid-js/mermaid-cli
+      - name: Validate all mermaid blocks
+        run: python3 scripts/check_mermaid.py --render
+
+  links:
+    name: Link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude-mail
+            --exclude 'https://x\.com/.*'
+            --exclude 'https://twitter\.com/.*'
+            './**/*.md'
+            './catalog/index.json'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

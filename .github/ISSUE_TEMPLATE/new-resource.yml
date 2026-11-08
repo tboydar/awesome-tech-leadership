@@ -1,0 +1,56 @@
+name: New resource / 新增資源
+description: Propose a new entry for the curated list / 提議新增一則條目
+title: "resource: "
+labels: ["new-resource"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Source URL / 來源連結
+      description: Must be publicly accessible today. Official docs, engineering blogs, open-source repos, or published papers only. 今日可開啟的公開連結，限官方文件／官方部落格／開源 repo／已發表論文。
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type / 類型
+      options: [method, skill, mcp, prompt, loop, tool, platform, paper, guide, policy, benchmark]
+    validations:
+      required: true
+  - type: input
+    id: oneliner_en
+    attributes:
+      label: One-liner (English)
+      placeholder: Write the test first, then the minimum code to pass it.
+    validations:
+      required: true
+  - type: input
+    id: oneliner_zh
+    attributes:
+      label: 一句話（繁體中文）
+      placeholder: 先寫測試，再寫剛好讓測試通過的程式碼。
+    validations:
+      required: true
+  - type: dropdown
+    id: roles
+    attributes:
+      label: Applicable roles / 適用角色（可多選）
+      multiple: true
+      options: [PM, QA, DEV, RD, SRE, PLATFORM, ERP, EM, DATA, ALL]
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License (SPDX, or n/a / proprietary)
+      placeholder: MIT / Apache-2.0 / n/a
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Why tech leaders should know it / 對 tech leader 的價值
+      description: 2-3 sentences. / 2-3 句話。
+    validations:
+      required: true

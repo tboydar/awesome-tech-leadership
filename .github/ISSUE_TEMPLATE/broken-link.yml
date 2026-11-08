@@ -1,0 +1,29 @@
+name: Broken link / 失效連結
+description: Report a dead or moved source link / 回報失效或搬家的來源連結
+title: "broken-link: "
+labels: ["broken-link"]
+body:
+  - type: input
+    id: entry_id
+    attributes:
+      label: Entry id / 條目 id
+      placeholder: methodologies/tdd
+    validations:
+      required: true
+  - type: input
+    id: dead_url
+    attributes:
+      label: Dead URL / 失效連結
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement URL (if known) / 替代連結（若知道）
+      placeholder: https://
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / 備註
+      placeholder: What did you observe? / 你看到什麼狀況？
