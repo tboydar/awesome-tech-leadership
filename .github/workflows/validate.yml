@@ -30,6 +30,10 @@ jobs:
       - name: Install mermaid-cli
         run: npm i -g @mermaid-js/mermaid-cli
       - name: Validate all mermaid blocks
+        env:
+          # mermaid-cli uses puppeteer-core, which never downloads a browser;
+          # ubuntu runners ship Google Chrome at this path.
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: python3 scripts/check_mermaid.py --render
 
   links:
@@ -42,7 +46,7 @@ jobs:
         with:
           args: >-
             --no-progress
-            --exclude-mail
+            --exclude '^mailto:'
             --exclude '^https://x\.com(/|$)'
             --exclude '^https://twitter\.com(/|$)'
             --exclude '^https://www\.twitter\.com(/|$)'

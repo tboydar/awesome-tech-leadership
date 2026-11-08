@@ -18,6 +18,9 @@ import tempfile
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+# Headless Chrome in CI containers needs sandbox off + a roomy /dev/shm;
+# without this config puppeteer's launcher crashes on every block.
+PUPPETEER_CONFIG = REPO_ROOT / "scripts" / "puppeteer-ci.json"
 
 KNOWN_TYPES = {
     "flowchart", "graph", "sequenceDiagram", "classDiagram", "stateDiagram",
@@ -73,10 +76,10 @@ def render_check(blocks) -> list[str]:
             src = tmpdir / f"block-{idx}.mmd"
             dst = tmpdir / f"block-{idx}.svg"
             src.write_text("\n".join(body) + "\n", encoding="utf-8")
-            proc = subprocess.run(
-                ["mmdc", "-i", str(src), "-o", str(dst)],
-                capture_output=True, text=True,
-            )
+            cmd = ["mmdc", "-i", str(src), "-o", str(dst)]
+            if PUPPETEER_CONFIG.is_file():
+                cmd += ["-p", str(PUPPETEER_CONFIG)]
+            proc = subprocess.run(cmd, capture_output=True, text=True)
             if proc.returncode != 0:
                 loc = f"{md.name}:{start}"
                 tail = (proc.stderr or proc.stdout).strip().splitlines()[-3:]

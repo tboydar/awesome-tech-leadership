@@ -20,7 +20,7 @@ jobs:
         with:
           args: >-
             --no-progress
-            --exclude-mail
+            --exclude '^mailto:'
             --exclude '^https://x\.com(/|$)'
             --exclude '^https://twitter\.com(/|$)'
             --exclude '^https://www\.twitter\.com(/|$)'
