@@ -21,57 +21,69 @@ jobs:
           args: >-
             --no-progress
             --exclude-mail
-            --exclude 'https://x\.com/.*'
-            --exclude 'https://twitter\.com/.*'
+            --exclude '^https://x\.com(/|$)'
+            --exclude '^https://twitter\.com(/|$)'
+            --exclude '^https://www\.twitter\.com(/|$)'
             './**/*.md'
             './catalog/index.json'
           output: lychee-report.md
           fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Find last link-check issue
+      - name: Find open automation-owned link-check issues
         id: last_issue
         uses: actions/github-script@v7
         with:
           script: |
-            const issues = await github.rest.issues.listForRepo({
+            // Only issues created by THIS workflow carry both the shared
+            // 'broken-link' label and the automation-only 'link-check:auto'
+            // label; human reports via the issue template never carry the
+            // auto marker, so they can never match this query.
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: 'broken-link',
+              labels: 'broken-link,link-check:auto',
               state: 'open',
-              per_page: 1,
+              per_page: 100,
             });
-            core.setOutput('number', issues.data[0]?.number ?? '');
-      - name: Close stale link-check issue if all links pass
-        if: steps.lychee.outputs.exit_code == '0' && steps.last_issue.outputs.number != ''
+            const numbers = issues
+              .filter(i => !i.pull_request
+                && i.title.startsWith('broken-link: weekly link check')
+                && i.labels.some(l => (l.name ?? l) === 'link-check:auto'))
+              .map(i => i.number);
+            core.setOutput('numbers', numbers.join(','));
+      - name: Close automation-owned issues if all links pass
+        if: steps.lychee.outputs.exit_code == '0' && steps.last_issue.outputs.numbers != ''
         uses: actions/github-script@v7
         env:
-          ISSUE_NUMBER: ${{ steps.last_issue.outputs.number }}
+          ISSUE_NUMBERS: ${{ steps.last_issue.outputs.numbers }}
         with:
           script: |
-            const raw = process.env.ISSUE_NUMBER ?? '';
-            if (!/^[0-9]+$/.test(raw)) {
-              core.setFailed(`Refusing to act on non-numeric issue number: ${raw}`);
+            const raw = process.env.ISSUE_NUMBERS ?? '';
+            const parts = raw.split(',').filter(Boolean);
+            if (!parts.every(p => /^[0-9]+$/.test(p))) {
+              core.setFailed(`Refusing to act on malformed issue number list: ${raw}`);
               return;
             }
-            const issue_number = parseInt(raw, 10);
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number,
-              body: 'All links resolve again ✅ (weekly link check) — closing.',
-            });
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number,
-              state: 'closed',
-              state_reason: 'completed',
-            });
+            for (const issue_number of parts.map(Number)) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body: 'All links resolve again ✅ (weekly link check) — closing.',
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                state: 'closed',
+                state_reason: 'completed',
+              });
+            }
       - name: Open issue for broken links
-        if: steps.lychee.outputs.exit_code != '0'
+        if: steps.lychee.outputs.exit_code != '0' && steps.last_issue.outputs.numbers == ''
         uses: peter-evans/create-issue-from-file@v3
         with:
           title: "broken-link: weekly link check found dead links"
           content-filepath: lychee-report.md
-          labels: broken-link
+          labels: broken-link,link-check:auto

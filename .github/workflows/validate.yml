@@ -43,8 +43,9 @@ jobs:
           args: >-
             --no-progress
             --exclude-mail
-            --exclude 'https://x\.com/.*'
-            --exclude 'https://twitter\.com/.*'
+            --exclude '^https://x\.com(/|$)'
+            --exclude '^https://twitter\.com(/|$)'
+            --exclude '^https://www\.twitter\.com(/|$)'
             './**/*.md'
             './catalog/index.json'
           fail: true
