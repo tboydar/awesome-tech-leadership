@@ -43,7 +43,7 @@ prompt 模式、loop、eval 資源。
 
 | | |
 |---|---|
-| Curated entries / 策展條目 | **447** across 6 domains / 6 大領域 |
+| Curated entries / 策展條目 | **448** across 6 domains / 6 大領域 |
 | Verified source URLs / 驗證來源 | **736** — incl. 51 arXiv papers, 226 GitHub repos |
 | Role guides / 角色指南 | **8** roles — PM · QA · DEV/RD · SRE · Platform · ERP · Data · EM/CTO |
 | AI companies / AI 公司 | **14** — Anthropic · OpenAI · Google · xAI · Mistral · Qwen · z.ai · DeepSeek +6 |

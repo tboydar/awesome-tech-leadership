@@ -36,7 +36,7 @@
 
 | | |
 |---|---|
-| 策展條目 | **447** 條，橫跨 6 大領域 |
+| 策展條目 | **448** 條，橫跨 6 大領域 |
 | 驗證來源 | **736** 個 — 含 51 篇 arXiv 論文、226 個 GitHub repo |
 | 角色指南 | **8** 角色 — PM · QA · DEV/RD · SRE · Platform · ERP · Data · EM/CTO |
 | AI 公司 | **14** 家 — Anthropic · OpenAI · Google · xAI · Mistral · Qwen · z.ai · DeepSeek 等 |

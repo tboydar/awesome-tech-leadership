@@ -235,6 +235,14 @@ flowchart LR
 - **來源 Sources**: [GitHub](https://github.com/microsoft/playwright-mcp) — 開源 (Apache-2.0)
 - **定價模式**: 開源
 
+### agent-qa | agent-qa
+<!-- entry:id=roles/agent-qa type=tool roles=QA,DEV,RD tags=natural-language-testing,web,mobile,mcp,memory license=FSL-1.1-ALv2 last_verified=2026-11-10 -->
+- **一句話**: Natural-language web, Android and iOS QA through CLI and MCP, with persistent memidex memory, validated self-improvement and recorded steps/screenshots.
+- **一句話（繁中）**: 透過 CLI 與 MCP 執行自然語言網頁、Android 與 iOS 測試，具備持久 memidex 記憶、經驗證的自我改進，以及步驟與截圖紀錄。
+- **適用角色**: QA、DEV、RD
+- **來源 Sources**: [agent-qa](https://vostride.com) — 官方 (FSL-1.1-ALv2)、[CLI documentation](https://vostride.com/docs/agent-qa/cli) — 官方
+- **注意事項**: Requires Node.js 24+, a configured compatible model and the target browser/device environment; model/device runtime costs are separate.
+
 ### Applitools Eyes | Applitools 視覺 AI
 <!-- entry:id=roles/applitools type=tool roles=QA tags=visual-testing,regression license=proprietary last_verified=2026-11-08 -->
 - **一句話**: Visual AI testing that detects meaningful UI visual regressions while ignoring rendering noise.
