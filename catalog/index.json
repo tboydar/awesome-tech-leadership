@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-08T16:04:05Z",
-  "entry_count": 447,
+  "generated_at": "2026-11-10T19:36:21Z",
+  "entry_count": 448,
   "entries": [
     {
       "id": "methodologies/acceptance-test-driven-development",
@@ -6131,6 +6131,31 @@
       "source_file": "docs/05-roles.md",
       "urls": [
         "https://github.com/SAP/abap-cleaner"
+      ]
+    },
+    {
+      "id": "roles/agent-qa",
+      "title": "agent-qa",
+      "title_short": "agent-qa",
+      "type": "tool",
+      "roles": [
+        "QA",
+        "DEV",
+        "RD"
+      ],
+      "tags": [
+        "natural-language-testing",
+        "web",
+        "mobile",
+        "mcp",
+        "memory"
+      ],
+      "license": "FSL-1.1-ALv2",
+      "last_verified": "2026-11-10",
+      "source_file": "docs/05-roles.md",
+      "urls": [
+        "https://vostride.com",
+        "https://vostride.com/docs/agent-qa/cli"
       ]
     },
     {
